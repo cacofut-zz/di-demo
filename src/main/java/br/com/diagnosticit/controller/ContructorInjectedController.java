@@ -6,15 +6,19 @@
 package br.com.diagnosticit.controller;
 
 import br.com.diagnosticit.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 /**
  *
  * @author cristianoca
  */
+@Controller
 public class ContructorInjectedController {
 
     private GreetingService greetingService;
 
+    @Autowired
     public ContructorInjectedController(GreetingService greetingService) {
         this.greetingService = greetingService;
     }

@@ -6,11 +6,15 @@
 package br.com.diagnosticit.controller;
 
 import br.com.diagnosticit.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 
 /**
  *
  * @author cristianoca
  */
+@Controller
 public class GetterInjectedController {
     
     private GreetingService greetingService;
@@ -19,7 +23,8 @@ public class GetterInjectedController {
         return greetingService.sayHello();
     }
 
-    public void setGreetingService(GreetingService greetingService) {
+    @Autowired
+    public void setGreetingService(@Qualifier("greetingGetterInjectedServiceImpl")GreetingService greetingService) {
         this.greetingService = greetingService;
     }
     
