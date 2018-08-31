@@ -26,6 +26,7 @@ public class DiDemoApplication {
             System.err.println( constructor.sayHello() );
             System.err.println( getter.sayHello() );
                                    
+            
 	}
 
         
