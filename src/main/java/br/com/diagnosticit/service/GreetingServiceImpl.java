@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  *
  * @author cristianoca
  */
-@Service
+//@Service
 public class GreetingServiceImpl implements GreetingService{
 
     @Override

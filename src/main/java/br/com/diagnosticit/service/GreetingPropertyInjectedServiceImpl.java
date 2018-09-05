@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  *
  * @author cristianoca
  */
-@Service
+//@Service
 public class GreetingPropertyInjectedServiceImpl implements GreetingService{
 
     @Override

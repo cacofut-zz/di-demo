@@ -5,22 +5,21 @@
  */
 package br.com.diagnosticit.service;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
-
 /**
  *
  * @author cristianoca
  */
-//@Service
-//@Primary
-//@Profile("es")
-public class GreetingPrimarySpanish implements GreetingService{
+public class GreetingGermanService implements GreetingService{
 
+    private GreetingRepository greetingRepository;
+
+    public GreetingGermanService(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    } 
+    
     @Override
     public String sayHello() {
-        return "Primary Spanish";
+        return greetingRepository.getGermanGreeting();
     }
     
 }

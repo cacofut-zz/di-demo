@@ -9,6 +9,11 @@ package br.com.diagnosticit.service;
  *
  * @author cristianoca
  */
-public interface GreetingService {
-    String sayHello();        
+public interface GreetingRepository {
+        
+    String getEnglishGreeting();
+
+    String getSpanishGreeting();
+
+    String getGermanGreeting();
 }
