@@ -4,6 +4,7 @@ import br.com.diagnosticit.controller.ContructorInjectedController;
 import br.com.diagnosticit.controller.GetterInjectedController;
 import br.com.diagnosticit.controller.MyController;
 import br.com.diagnosticit.controller.PropertyInjectedController;
+import br.com.diagnosticit.exemplobeans.FakeDataSource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,14 +20,8 @@ public class DiDemoApplication {
             ApplicationContext ctx  = SpringApplication.run(DiDemoApplication.class, args);
             MyController controller = (MyController) ctx.getBean("myController");
             
-            PropertyInjectedController property = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
-            ContructorInjectedController constructor = (ContructorInjectedController) ctx.getBean("contructorInjectedController");
-            GetterInjectedController getter = (GetterInjectedController) ctx.getBean( "getterInjectedController" );
-            System.err.println( property.sayHello() );
-            System.err.println( constructor.sayHello() );
-            System.err.println( getter.sayHello() );
-                                   
-            
+            FakeDataSource fds = (FakeDataSource) ctx.getBean( "fakeDataSource" );
+            System.out.println(fds);
 	}
 
         
