@@ -6,10 +6,12 @@
 package br.com.diagnosticit.config;
 
 import br.com.diagnosticit.exemplobeans.FakeDataSource;
+import br.com.diagnosticit.exemplobeans.FakeJmsBroker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.PropertiesPropertySource;
 
@@ -19,6 +21,10 @@ import org.springframework.core.env.PropertiesPropertySource;
  */
 @Configuration
 @PropertySource("classpath:datasource.properties")
+@PropertySources({
+    @PropertySource("classpath:datasource.properties"),
+    @PropertySource("classpath:jms.properties")
+})
 public class PropertiesConfig {
     
     @Value("${diagnosticit.username}")
@@ -29,6 +35,15 @@ public class PropertiesConfig {
     
     @Value("${diagnosticit.url}")
     private String url;
+    
+    @Value("${diagnosticit.jms.username}")
+    private String jmsUsername;
+    
+    @Value("${diagnosticit.jms.password}")
+    private String jmsPassword;
+    
+    @Value("${diagnosticit.jms.url}")
+    private String jmsUrl;
     
     @Bean
     public static PropertySourcesPlaceholderConfigurer properties(){
@@ -45,4 +60,12 @@ public class PropertiesConfig {
         return fds;
     }
     
+    @Bean
+    public FakeJmsBroker fakeJmsBroker(){
+        FakeJmsBroker fds = new FakeJmsBroker();
+        fds.setUserName(jmsUsername);
+        fds.setPassword(jmsPassword);
+        fds.setUrl(jmsUrl);
+        return fds;
+    }
 }
